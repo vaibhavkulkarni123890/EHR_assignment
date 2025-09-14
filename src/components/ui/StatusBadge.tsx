@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface StatusBadgeProps {
-  status: 'active' | 'inactive' | 'pending' | 'error' | 'success' | 'warning';
+  status: 'active' | 'error' | 'pending' | 'success' | 'warning' | 'inactive' | 'checking';
   children: React.ReactNode;
   size?: 'sm' | 'md' | 'lg';
 }
@@ -20,6 +20,7 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
     error: 'bg-red-100 text-red-800 border-red-200',
     success: 'bg-green-100 text-green-800 border-green-200',
     warning: 'bg-orange-100 text-orange-800 border-orange-200',
+    checking: 'bg-blue-100 text-blue-800 border-blue-200', // Added 'checking' status
   };
 
   const sizes = {
@@ -35,7 +36,8 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
         status === 'inactive' ? 'bg-gray-400' :
         status === 'pending' ? 'bg-yellow-500' :
         status === 'error' ? 'bg-red-500' :
-        status === 'warning' ? 'bg-orange-500' : 'bg-blue-500'
+        status === 'warning' ? 'bg-orange-500' :
+        status === 'checking' ? 'bg-blue-500 animate-pulse' : 'bg-blue-500'
       }`}></div>
       {children}
     </span>
